@@ -24,4 +24,13 @@
         android:text="Customer Phone number"
         tools:layout_editor_absoluteX="10dp"
         tools:layout_editor_absoluteY="86dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="169dp"
+        android:layout_height="137dp"
+        app:srcCompat="@drawable/delpizza"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="152dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
