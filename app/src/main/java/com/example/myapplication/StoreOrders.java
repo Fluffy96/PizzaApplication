@@ -12,8 +12,8 @@ package com.example.myapplication;
  * @author Divyesh Nemam Baskaran, Viraj Patel
  *
  */
-import javafx.beans.Observable;
-import javafx.collections.ObservableList;
+//import javafx.beans.Observable;
+//import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class StoreOrders {
 
-    private static ArrayList<ObservableList<Orders>> finalOrders = new ArrayList<>();
+    //private static ArrayList<ObservableList<Orders>> finalOrders = new ArrayList<>();
     private static ArrayList<Double> totalPrices = new ArrayList<>();
     private static ArrayList<Orders> orders = new ArrayList<>();
     private static ArrayList<String> phoneNumberList = new ArrayList<>();
