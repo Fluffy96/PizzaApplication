@@ -6,12 +6,12 @@ import android.widget.AdapterView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CurrentOrder extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class StoreOrdersActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.current_order);
+        setContentView(R.layout.store_orders);
     }
 
     @Override

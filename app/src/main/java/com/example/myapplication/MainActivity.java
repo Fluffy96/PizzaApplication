@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,33 +22,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onDeluxeClick(View view){
-        Intent intent = new Intent(this, PizzaOrder.class);
+        Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "deluxe";
         intent.putExtra("PIZZA", pizzaType);
         startActivity(intent);
     }
 
     public void onHawaiianClick(View view){
-        Intent intent = new Intent(this, PizzaOrder.class);
+        Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "hawaiian";
         intent.putExtra("PIZZA", pizzaType);
         startActivity(intent);
     }
 
     public void onPepperoniClick(View view){
-        Intent intent = new Intent(this, PizzaOrder.class);
+        Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "pepperoni";
         intent.putExtra("PIZZA", pizzaType);
         startActivity(intent);
     }
 
     public void onCOrderClick(View view){
-        Intent intent = new Intent(this, CurrentOrder.class);
+        Intent intent = new Intent(this, CurrentOrderActivity.class);
         startActivity(intent);
     }
 
     public void onSOrderClick(View view){
-        Intent intent = new Intent(this, StoreOrdersAndroid.class);
+        Intent intent = new Intent(this, StoreOrdersActivity.class);
         startActivity(intent);
     }
 

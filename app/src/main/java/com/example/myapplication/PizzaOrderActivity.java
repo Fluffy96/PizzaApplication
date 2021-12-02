@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class PizzaOrder extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class PizzaOrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private ImageView pizza;
 
