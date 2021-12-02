@@ -25,31 +25,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "deluxe";
         intent.putExtra("PIZZA", pizzaType);
-        startActivity(intent);
+        this.startActivity(intent);
     }
 
     public void onHawaiianClick(View view){
         Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "hawaiian";
         intent.putExtra("PIZZA", pizzaType);
-        startActivity(intent);
+        this.startActivity(intent);
     }
 
     public void onPepperoniClick(View view){
         Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "pepperoni";
         intent.putExtra("PIZZA", pizzaType);
-        startActivity(intent);
+        this.startActivity(intent);
     }
 
     public void onCOrderClick(View view){
         Intent intent = new Intent(this, CurrentOrderActivity.class);
-        startActivity(intent);
+        this.startActivity(intent);
     }
 
     public void onSOrderClick(View view){
         Intent intent = new Intent(this, StoreOrdersActivity.class);
-        startActivity(intent);
+        this.startActivity(intent);
     }
 
     @Override
