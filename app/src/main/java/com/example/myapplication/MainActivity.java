@@ -43,6 +43,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(intent);
     }
 
+    public void onCOrderClick(View view){
+        Intent intent = new Intent(this, CurrentOrder.class);
+        startActivity(intent);
+    }
+
+    public void onSOrderClick(View view){
+        Intent intent = new Intent(this, StoreOrdersAndroid.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
