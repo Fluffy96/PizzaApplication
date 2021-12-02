@@ -16,27 +16,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ImageView deluxePizza, hawaiianPizza, pepperoniPizza, cOrder, sOrder;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         phoneNumber = findViewById(R.id.phoneNumber);
     }
 
-    protected void onDeluxeClick(View view){
+    public void onDeluxeClick(View view){
         Intent intent = new Intent(this, PizzaOrder.class);
         String pizzaType = "deluxe";
         intent.putExtra("PIZZA", pizzaType);
         startActivity(intent);
     }
 
-    protected void onHawaiianClick(View view){
+    public void onHawaiianClick(View view){
         Intent intent = new Intent(this, PizzaOrder.class);
         String pizzaType = "hawaiian";
         intent.putExtra("PIZZA", pizzaType);
         startActivity(intent);
     }
 
-    protected void onPepperoniClick(View view){
+    public void onPepperoniClick(View view){
         Intent intent = new Intent(this, PizzaOrder.class);
         String pizzaType = "pepperoni";
         intent.putExtra("PIZZA", pizzaType);

@@ -13,7 +13,7 @@ public class PizzaOrder extends AppCompatActivity implements AdapterView.OnItemS
     private ImageView pizza;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pizza_order);
         Intent intent = getIntent();
