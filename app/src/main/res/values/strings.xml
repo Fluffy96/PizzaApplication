@@ -3,4 +3,6 @@
     <string name="t1">Deluxe Pizza</string>
     <string name="t2">Hawaiian Pizza</string>
     <string name="t3">Pepperoni Pizza</string>
+    <string name="t4">Current Order</string>
+    <string name="t5">Store Orders</string>
 </resources>
