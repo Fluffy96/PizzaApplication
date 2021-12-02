@@ -19,6 +19,13 @@ public class PizzaOrder extends AppCompatActivity implements AdapterView.OnItemS
         Intent intent = getIntent();
         String pizzaType = intent.getStringExtra("PIZZA");
         pizza = findViewById(R.id.pizza);
+        if(pizzaType.equals("deluxe")){
+            pizza.setImageResource(R.drawable.delpizza);
+        } else if(pizzaType.equals("hawaiian")){
+            pizza.setImageResource(R.drawable.hawaiianhampizza);
+        } else if(pizzaType.equals("pepperoni")){
+            pizza.setImageResource(R.drawable.pepperonipizza);
+        }
     }
 
     @Override

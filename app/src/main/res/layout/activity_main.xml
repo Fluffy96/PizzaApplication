@@ -87,7 +87,7 @@
         app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/gettyimages_1133727757" />
+        app:srcCompat="@drawable/pepperonipizza" />
 
     <TextView
         android:id="@+id/textView3"

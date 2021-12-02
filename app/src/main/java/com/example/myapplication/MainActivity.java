@@ -29,6 +29,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(intent);
     }
 
+    protected void onHawaiianClick(View view){
+        Intent intent = new Intent(this, PizzaOrder.class);
+        String pizzaType = "hawaiian";
+        intent.putExtra("PIZZA", pizzaType);
+        startActivity(intent);
+    }
+
+    protected void onPepperoniClick(View view){
+        Intent intent = new Intent(this, PizzaOrder.class);
+        String pizzaType = "pepperoni";
+        intent.putExtra("PIZZA", pizzaType);
+        startActivity(intent);
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
