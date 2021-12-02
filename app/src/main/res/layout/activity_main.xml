@@ -33,7 +33,7 @@
         android:layout_marginLeft="29dp"
         android:layout_marginTop="52dp"
         android:editable="false"
-        android:text="Deluxe Pizza"
+        android:text="@string/t1"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="208dp"
-        android:text="Hawaiian Pizza"
+        android:text="@string/t2"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -96,7 +96,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="4dp"
-        android:text="Pepperoni Pizza"
+        android:text="@string/t3"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
