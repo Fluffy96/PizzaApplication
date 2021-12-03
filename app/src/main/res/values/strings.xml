@@ -6,4 +6,23 @@
     <string name="t4">Current Order</string>
     <string name="t5">Store Orders</string>
     <string name="p1">Phone Number</string>
+    <string name="pType">Pizza Type</string>
+    <string name="si">Size</string>
+    <string name="top">Toppings</string>
+    <string name="top1">Pepperoni</string>
+    <string name="top2">Ham</string>
+    <string name="top3">Pineapple</string>
+    <string name="top4">Olives</string>
+    <string name="top5">Chicken</string>
+    <string name="top6">Mushroom</string>
+    <string name="top7">Onion</string>
+    <string name="pr">Price</string>
+    <string name="add">Add To Order</string>
+
+
+    <string-array name="Size">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Learn</item>
+    </string-array>
 </resources>
