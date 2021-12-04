@@ -7,31 +7,25 @@
 
     <ImageView
         android:id="@+id/pizza"
-        android:layout_width="0dp"
+        android:layout_width="198dp"
         android:layout_height="179dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
         android:contentDescription="@string/pType"
-        app:layout_constraintEnd_toStartOf="@+id/size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/delpizza" />
 
     <Spinner
         android:id="@+id/size"
-        android:layout_width="0dp"
+        android:layout_width="208dp"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="316dp"
+        android:layout_marginStart="202dp"
+        android:layout_marginLeft="202dp"
+        android:layout_marginTop="35dp"
         android:contentDescription="@string/si"
-        app:layout_constraintBottom_toTopOf="@+id/pizzaOrderPrice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pizza"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -40,35 +34,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="195dp"
         android:text="@string/top"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pizza" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
+
+    <com.google.android.material.chip.ChipGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="78dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/pizzaOrderPrice"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="260dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView6">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
-        <RadioButton
+        <com.google.android.material.chip.Chip
             android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/top1"
             app:layout_constraintBottom_toTopOf="@+id/checkBox2"
-            app:layout_constraintStart_toStartOf="@+id/checkBox2" />
+            app:layout_constraintStart_toStartOf="@+id/checkBox2"
+            android:checkable="true"/>
 
-        <RadioButton
+        <com.google.android.material.chip.Chip
             android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,9 +71,10 @@
             android:layout_marginLeft="1dp"
             android:text="@string/top2"
             app:layout_constraintBottom_toTopOf="@+id/checkBox4"
-            app:layout_constraintStart_toStartOf="@+id/checkBox4" />
+            app:layout_constraintStart_toStartOf="@+id/checkBox4"
+            android:checkable="true"/>
 
-        <RadioButton
+        <com.google.android.material.chip.Chip
             android:id="@+id/checkBox4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,9 +83,10 @@
             android:layout_marginBottom="13dp"
             android:text="@string/top3"
             app:layout_constraintBottom_toBottomOf="@+id/checkBox7"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:checkable="true"/>
 
-        <RadioButton
+        <com.google.android.material.chip.Chip
             android:id="@+id/checkBox5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,9 +95,10 @@
             android:layout_marginTop="14dp"
             android:text="@string/top4"
             app:layout_constraintStart_toEndOf="@+id/checkBox"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            android:checkable="true"/>
 
-        <RadioButton
+        <com.google.android.material.chip.Chip
             android:id="@+id/checkBox6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -109,9 +107,10 @@
             android:layout_marginTop="5dp"
             android:text="@string/top5"
             app:layout_constraintStart_toStartOf="@+id/checkBox5"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
+            app:layout_constraintTop_toBottomOf="@+id/checkBox5"
+            android:checkable="true"/>
 
-        <RadioButton
+        <com.google.android.material.chip.Chip
             android:id="@+id/checkBox7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,9 +119,10 @@
             android:layout_marginTop="7dp"
             android:text="@string/top6"
             app:layout_constraintStart_toStartOf="@+id/checkBox6"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+            app:layout_constraintTop_toBottomOf="@+id/checkBox6"
+            android:checkable="true"/>
 
-        <RadioButton
+        <com.google.android.material.chip.Chip
             android:id="@+id/checkBox8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,40 +131,35 @@
             android:layout_marginBottom="10dp"
             android:text="@string/top7"
             app:layout_constraintBottom_toTopOf="@+id/checkBox7"
-            app:layout_constraintStart_toEndOf="@+id/checkBox7" />
-    </RadioGroup>
-
+            app:layout_constraintStart_toEndOf="@+id/checkBox7"
+            android:checkable="true"/>
+    </com.google.android.material.chip.ChipGroup>
 
     <EditText
         android:id="@+id/pizzaOrderPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="395dp"
         android:ems="10"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/addToOrder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/size"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/pr" />
 
     <Button
         android:id="@+id/addToOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="169dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginLeft="133dp"
+        android:layout_marginTop="478dp"
         android:onClick="onAddToOrderClick"
         android:text="@string/add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/pizzaOrderPrice"
-        app:layout_constraintTop_toBottomOf="@+id/pizzaOrderPrice" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
