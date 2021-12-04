@@ -22,12 +22,13 @@
         android:id="@+id/phoneNumberOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="phone"
         android:minHeight="48dp"
         android:text="@string/p1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -36,14 +37,15 @@
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="138dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginBottom="82dp"
         app:layout_constraintBottom_toTopOf="@+id/subtotal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberOrder"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button"
