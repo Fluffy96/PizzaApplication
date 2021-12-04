@@ -5,7 +5,7 @@
     <string name="t3">Pepperoni Pizza</string>
     <string name="t4">Current Order</string>
     <string name="t5">Store Orders</string>
-    <string name="p1">Phone Number</string>
+    <string name="p1">Customer Number</string>
     <string name="pType">Pizza Type</string>
     <string name="si">Size</string>
     <string name="top">Toppings</string>
@@ -18,6 +18,14 @@
     <string name="top7">Onion</string>
     <string name="pr">Price</string>
     <string name="add">Add To Order</string>
+    <string name="piz">Pizza Order</string>
+    <string name="rem">Remove Pizza</string>
+    <string name="sub">Subtotal</string>
+    <string name="tax">Sales Tax</string>
+    <string name="tot">Order Total</string>
+    <string name="pla">Place Order</string>
+    <string name="stor">Store Order</string>
+    <string name="ca">Cancel Order</string>
 
 
     <string-array name="Size">
