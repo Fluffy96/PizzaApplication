@@ -67,20 +67,22 @@
         android:layout_marginRight="54dp"
         android:contentDescription="@string/t2"
         android:onClick="onHawaiianClick"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.078"
         app:srcCompat="@drawable/hawaiianhampizza" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="440dp"
         android:text="@string/t2"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,10 +95,12 @@
         android:layout_marginTop="16dp"
         android:contentDescription="t3"
         android:onClick="onPepperoniClick"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.245"
         app:srcCompat="@drawable/pepperonipizza" />
 
     <TextView
@@ -110,14 +114,15 @@
         android:layout_marginRight="112dp"
         android:text="@string/t3"
         android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="140dp"
+        android:layout_height="107dp"
         android:layout_marginStart="241dp"
         android:layout_marginLeft="241dp"
         android:layout_marginEnd="29dp"
@@ -157,6 +162,8 @@
         android:onClick="onCOrderClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/istockphoto_1206806317_170667a" />
 
     <TextView

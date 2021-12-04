@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.sql.SQLOutput;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private TextView phoneNumber;
@@ -22,10 +24,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onDeluxeClick(View view){
-        Intent intent = new Intent(this, PizzaOrderActivity.class);
-        String pizzaType = "deluxe";
-        intent.putExtra("PIZZA", pizzaType);
-        this.startActivity(intent);
+//        Intent intent = new Intent(this, PizzaOrderActivity.class);
+//        String pizzaType = "deluxe";
+//        intent.putExtra("PIZZA", pizzaType);
+//        System.out.println("PEN15");
+//        this.startActivity(intent);
+        setContentView(R.layout.pizza_order);
     }
 
     public void onHawaiianClick(View view){
