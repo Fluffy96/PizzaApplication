@@ -26,6 +26,7 @@
     <string name="pla">Place Order</string>
     <string name="stor">Store Order</string>
     <string name="ca">Cancel Order</string>
+    <string name="e1">Invalid Phone Number</string>
 
 
     <string-array name="Size">
