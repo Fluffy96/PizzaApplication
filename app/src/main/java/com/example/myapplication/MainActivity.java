@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -15,6 +14,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private TextView phoneNumber;
     private ImageView deluxePizza, hawaiianPizza, pepperoniPizza, cOrder, sOrder;
+    private Order order = new Order();
+    private StoreOrders storeOrders = new StoreOrders();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public boolean numberChecker(TextView t){
-        String num = t.toString();
+        String num = t.getText().toString();
         if(num.length() == 10){
+            //Toast.makeText(getApplicationContext(),"Correct Length",Toast.LENGTH_SHORT).show();
             return true;
         }
         else {

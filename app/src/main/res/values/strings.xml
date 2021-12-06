@@ -27,7 +27,7 @@
     <string name="stor">Store Order</string>
     <string name="ca">Cancel Order</string>
     <string name="e1">Invalid Phone Number</string>
-
+    <string name="potitle">Order Your Pizza</string>
 
     <string-array name="Size">
         <item>Small</item>

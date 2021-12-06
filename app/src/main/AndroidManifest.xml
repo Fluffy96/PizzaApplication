@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity android:name=".PizzaOrderActivity" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".CurrentOrderActivity" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".StoreOrdersActivity" android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -18,9 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PizzaOrderActivity"></activity>
-        <activity android:name=".CurrentOrderActivity"></activity>
-        <activity android:name=".StoreOrdersActivity"></activity>
+
     </application>
 
 </manifest>

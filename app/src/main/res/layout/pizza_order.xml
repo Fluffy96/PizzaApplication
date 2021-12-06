@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,7 +18,7 @@
         app:srcCompat="@drawable/delpizza" />
 
     <Spinner
-        android:id="@+id/size"
+        android:id="@+id/sizes"
         android:layout_width="208dp"
         android:layout_height="48dp"
         android:layout_marginStart="202dp"
@@ -27,136 +28,144 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="195dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="220dp"
         android:text="@string/top"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="260dp"
+        android:id="@+id/toppingGroup"
+        android:layout_width="331dp"
+        android:layout_height="159dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="252dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/checkBox"
+            android:id="@+id/pepperoni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:checkable="true"
+            android:onClick="toppingClick"
             android:text="@string/top1"
-            app:layout_constraintBottom_toTopOf="@+id/checkBox2"
-            app:layout_constraintStart_toStartOf="@+id/checkBox2"
-            android:checkable="true"/>
+            app:layout_constraintBottom_toTopOf="@+id/ham"
+            app:layout_constraintStart_toStartOf="@+id/ham" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/checkBox2"
+            android:id="@+id/ham"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginLeft="1dp"
+            android:checkable="true"
+            android:onClick="toppingClick"
             android:text="@string/top2"
-            app:layout_constraintBottom_toTopOf="@+id/checkBox4"
-            app:layout_constraintStart_toStartOf="@+id/checkBox4"
-            android:checkable="true"/>
+            app:layout_constraintBottom_toTopOf="@+id/pineapple"
+            app:layout_constraintStart_toStartOf="@+id/pineapple" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/checkBox4"
+            android:id="@+id/pineapple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginBottom="13dp"
+            android:checkable="true"
+            android:onClick="toppingClick"
             android:text="@string/top3"
-            app:layout_constraintBottom_toBottomOf="@+id/checkBox7"
-            app:layout_constraintStart_toStartOf="parent"
-            android:checkable="true"/>
+            app:layout_constraintBottom_toBottomOf="@+id/mushroom"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/checkBox5"
+            android:id="@+id/olives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="31dp"
             android:layout_marginLeft="31dp"
             android:layout_marginTop="14dp"
+            android:checkable="true"
+            android:onClick="toppingClick"
             android:text="@string/top4"
-            app:layout_constraintStart_toEndOf="@+id/checkBox"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            android:checkable="true"/>
+            app:layout_constraintStart_toEndOf="@+id/pepperoni"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/checkBox6"
+            android:id="@+id/chicken"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="5dp"
+            android:checkable="true"
+            android:onClick="toppingClick"
             android:text="@string/top5"
-            app:layout_constraintStart_toStartOf="@+id/checkBox5"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox5"
-            android:checkable="true"/>
+            app:layout_constraintStart_toStartOf="@+id/olives"
+            app:layout_constraintTop_toBottomOf="@+id/olives" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/checkBox7"
+            android:id="@+id/mushroom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginLeft="1dp"
             android:layout_marginTop="7dp"
+            android:checkable="true"
+            android:onClick="toppingClick"
             android:text="@string/top6"
-            app:layout_constraintStart_toStartOf="@+id/checkBox6"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox6"
-            android:checkable="true"/>
+            app:layout_constraintStart_toStartOf="@+id/chicken"
+            app:layout_constraintTop_toBottomOf="@+id/chicken" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/checkBox8"
+            android:id="@+id/onion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginLeft="12dp"
             android:layout_marginBottom="10dp"
+            android:checkable="true"
+            android:onClick="toppingClick"
             android:text="@string/top7"
-            app:layout_constraintBottom_toTopOf="@+id/checkBox7"
-            app:layout_constraintStart_toEndOf="@+id/checkBox7"
-            android:checkable="true"/>
+            app:layout_constraintBottom_toTopOf="@+id/mushroom"
+            app:layout_constraintStart_toEndOf="@+id/mushroom" />
     </com.google.android.material.chip.ChipGroup>
 
-    <EditText
+    <TextView
         android:id="@+id/pizzaOrderPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="395dp"
+        android:layout_width="166dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="456dp"
         android:ems="10"
-        android:hint="@string/pr"
-        android:autofillHints="@string/pr"
-        android:inputType="numberDecimal"
+        android:gravity="center"
+        android:inputType="none"
         android:minHeight="48dp"
         android:textColor="#000000"
+        android:textSize="24sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/pr" />
 
     <Button
         android:id="@+id/addToOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
-        android:layout_marginLeft="133dp"
-        android:layout_marginTop="478dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginLeft="132dp"
+        android:layout_marginTop="512dp"
         android:onClick="onAddToOrderClick"
         android:text="@string/add"
         app:layout_constraintStart_toStartOf="parent"

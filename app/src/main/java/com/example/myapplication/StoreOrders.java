@@ -24,7 +24,7 @@ public class StoreOrders {
 
     //private static ArrayList<ObservableList<Orders>> finalOrders = new ArrayList<>();
     private static ArrayList<Double> totalPrices = new ArrayList<>();
-    private static ArrayList<Orders> orders = new ArrayList<>();
+    private static ArrayList<Order> orders = new ArrayList<>();
     private static ArrayList<String> phoneNumberList = new ArrayList<>();
     private static String currentNumber;
     private static final int NOEXSIST = -1;
@@ -39,7 +39,7 @@ public class StoreOrders {
      * Adds an order to the order arraylist
      * @param order
      */
-    public void addOrders( Orders order){
+    public void addOrders( Order order){
         orders.add(order);
     }
 
@@ -55,7 +55,7 @@ public class StoreOrders {
      * Returns all orders that were added
      * @return Orders
      */
-    public  ArrayList<Orders> getOrders() {
+    public  ArrayList<Order> getOrders() {
         return orders;
     }
 
