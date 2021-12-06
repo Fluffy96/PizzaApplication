@@ -11,7 +11,7 @@ package com.example.myapplication;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class Orders {
+public class Order {
     private String phoneNum;
     private ArrayList<Pizza> pizzaList = new ArrayList<>();
     private double price;
@@ -21,14 +21,14 @@ public class Orders {
      * This constructor creates an Orders object with a given customer phone number
      * @param phoneNu
      */
-    public Orders(String phoneNu){
+    public Order(String phoneNu){
         phoneNum = phoneNu;
     }
 
     /**
      * This the default constructor which creates an Orders object
      */
-    public Orders(){
+    public Order(){
 
     }
 
