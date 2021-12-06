@@ -103,6 +103,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
                     break;
                 case R.id.ham:
                     tops.add(Topping.HAM);
+
                     break;
                 case R.id.mushroom:
                     tops.add(Topping.MUSHROOM);
