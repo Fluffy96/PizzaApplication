@@ -29,7 +29,8 @@
         android:ems="10"
         android:inputType="none"
         android:minHeight="48dp"
-        android:text="@string/p1"
+        android:hint="@string/p1"
+        android:autofillHints="@string/p1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +58,8 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/sub" />
+        android:hint="@string/sub"
+        android:autofillHints="@string/sub" />
 
     <EditText
         android:id="@+id/salesTax"
@@ -71,7 +73,8 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/tax" />
+        android:hint="@string/tax"
+        android:autofillHints="@string/tax" />
 
     <EditText
         android:id="@+id/ordertotal"
@@ -83,7 +86,8 @@
         android:ems="10"
         android:inputType="none"
         android:minHeight="48dp"
-        android:text="@string/tot"
+        android:hint="@string/tot"
+        android:autofillHints="@string/tot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
