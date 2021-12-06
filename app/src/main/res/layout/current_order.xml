@@ -26,11 +26,12 @@
         android:layout_marginStart="102dp"
         android:layout_marginLeft="102dp"
         android:layout_marginTop="85dp"
+        android:autofillHints="@string/p1"
+        android:editable="false"
         android:ems="10"
+        android:hint="@string/p1"
         android:inputType="none"
         android:minHeight="48dp"
-        android:hint="@string/p1"
-        android:autofillHints="@string/p1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,13 +54,14 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="436dp"
+        android:autofillHints="@string/sub"
+        android:editable="false"
         android:ems="10"
+        android:hint="@string/sub"
         android:inputType="none"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/sub"
-        android:autofillHints="@string/sub" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/salesTax"
@@ -68,13 +70,14 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="484dp"
+        android:autofillHints="@string/tax"
+        android:editable="false"
         android:ems="10"
+        android:hint="@string/tax"
         android:inputType="none"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/tax"
-        android:autofillHints="@string/tax" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/ordertotal"
@@ -83,11 +86,12 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="532dp"
+        android:autofillHints="@string/tot"
+        android:editable="false"
         android:ems="10"
+        android:hint="@string/tot"
         android:inputType="none"
         android:minHeight="48dp"
-        android:hint="@string/tot"
-        android:autofillHints="@string/tot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
