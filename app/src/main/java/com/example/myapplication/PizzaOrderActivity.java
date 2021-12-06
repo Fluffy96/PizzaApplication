@@ -127,12 +127,17 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
 
     public void onAddToOrderClick(View view){
         order.addPizza(initialSmallPizza,initialSmallPizza.getprice());
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra("Order", order);
-        intent.putExtra("Number", number);
-        intent.putExtra("RequestCode", REQUESTCODE);
-//        setResult(RESULT_OK, intent);
-        startActivity(intent);
+
+//        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//        intent.putExtra("Order", order);
+//        intent.putExtra("Number", number);
+//        intent.putExtra("RequestCode", REQUESTCODE);
+////        setResult(RESULT_OK, intent);
+//        startActivity(intent);
+        Intent data = new Intent();
+        data.putExtra("Order", order);
+        setResult(RESULT_OK, data);
+        finish();
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private TextView phoneNumber;
     private ImageView deluxePizza, hawaiianPizza, pepperoniPizza, cOrder, sOrder;
-    private Order order = new Order();
+    private Order order;
     private StoreOrders storeOrders = new StoreOrders();
     private double currentOrderTotal;
     private String currentNumber;
@@ -29,24 +30,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         phoneNumber = findViewById(R.id.phoneNumber);
-        int requestCode = intent.getIntExtra("RequestCode", ONE);
-        if (requestCode == ONE) {
-            order = (Order) intent.getSerializableExtra("Order");
-            currentNumber = intent.getStringExtra("Number");
-        }
-        if(requestCode == TWO){
-            order = (Order) intent.getSerializableExtra("Order");
-            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
-            currentOrderTotal = intent.getDoubleExtra("currentOrderTotal", NEG);
-            currentNumber = intent.getStringExtra("number");
-            storeOrders.addOrders(order);
-            storeOrders.addTP(currentOrderTotal);
-            storeOrders.addPhoneNumbers(currentNumber);
-        }
-        if(requestCode == THREE){
-            //NEED TO MOD
-            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
-        }
+//        int requestCode = ONE;//intent.getIntExtra("RequestCode", ONE);
+//        if (requestCode == ONE) {
+//            order = (Order) intent.getSerializableExtra("Order");
+//            currentNumber = intent.getStringExtra("Number");
+//        }
+//        if(requestCode == TWO){
+//            order = (Order) intent.getSerializableExtra("Order");
+//            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+//            currentOrderTotal = intent.getDoubleExtra("currentOrderTotal", NEG);
+//            currentNumber = intent.getStringExtra("number");
+//            storeOrders.addOrders(order);
+//            storeOrders.addTP(currentOrderTotal);
+//            storeOrders.addPhoneNumbers(currentNumber);
+//        }
+//        if(requestCode == THREE){
+//            //NEED TO MOD
+//            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+//        }
         phoneNumber.setText(currentNumber);
     }
 
@@ -56,7 +57,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            order = new Order(phoneNumber.getText().toString());
+            if(order == null || !order.getPhoneNum().equals(phoneNumber.getText())) {
+                order = new Order(phoneNumber.getText().toString());
+            }
             intent.putExtra("Order", order);
             this.startActivityForResult(intent, ONE);
         }
@@ -68,7 +71,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            order = new Order(phoneNumber.getText().toString());
+            if(order == null || !order.getPhoneNum().equals(phoneNumber.getText())) {
+                order = new Order(phoneNumber.getText().toString());
+            }
             intent.putExtra("Order", order);
             this.startActivityForResult(intent, ONE);
         }
@@ -80,7 +85,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            order = new Order(phoneNumber.getText().toString());
+            if(order == null || !order.getPhoneNum().equals(phoneNumber.getText())) {
+                order = new Order(phoneNumber.getText().toString());
+            }
             intent.putExtra("Order", order);
             this.startActivityForResult(intent, ONE);
         }
@@ -90,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = new Intent(this, CurrentOrderActivity.class);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            intent.putExtra("NUMBER", phoneNumber.getText());
+            intent.putExtra("NUMBER", order.getPhoneNum());
             intent.putExtra("Order", order);
             intent.putExtra("StoreOrders", storeOrders);
             this.startActivityForResult(intent, TWO);
@@ -106,9 +113,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+    @SuppressLint("MissingSuperCall")
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-
+//        super.onActivityResult(requestCode, resultCode, intent);
+        //int requestCode = ONE;//intent.getIntExtra("RequestCode", ONE);
+        if (requestCode == ONE) {
+            order = (Order) getIntent().getSerializableExtra("Order");
+            //currentNumber = intent.getStringExtra("Number");
+        }
+        if(requestCode == TWO){
+            order = (Order) intent.getSerializableExtra("Order");
+            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+            currentOrderTotal = intent.getDoubleExtra("currentOrderTotal", NEG);
+            //currentNumber = intent.getStringExtra("number");
+            storeOrders.addOrders(order);
+            storeOrders.addTP(currentOrderTotal);
+            storeOrders.addPhoneNumbers(currentNumber);
+        }
+        if(requestCode == THREE){
+            //NEED TO MOD
+            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+        }
     }
 
     public boolean numberChecker(TextView t){

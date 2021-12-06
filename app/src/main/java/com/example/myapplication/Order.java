@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Order implements Serializable {
     private String phoneNum;
     private ArrayList<Pizza> pizzaList = new ArrayList<>();
-    private double price;
+    private double price = 0;
     private DecimalFormat df = new DecimalFormat("#.##");
 
     /**

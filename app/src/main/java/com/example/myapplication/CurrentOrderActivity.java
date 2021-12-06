@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,9 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
     private StoreOrders storeOrders;
     private TextView subtotal, salesTax, ordertotal, phoneNumberOrder;
     private ListView currOrderListView;
+    ArrayAdapter<String> pizzas;
     private String number;
+    private static final double TAX = 0.06625;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +39,11 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
         CharSequence number = intent.getStringExtra("NUMBER");
         order = (Order) intent.getSerializableExtra("Order");
         storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
-        phoneNumberOrder.setText(number);
-
+        //
+        phoneNumberOrder.setText(order.getPhoneNum());
+        subtotal.setText(df.format(order.getPrice()));
+        salesTax.setText(df.format(order.getPrice()*TAX));
+        ordertotal.setText(df.format(order.getPrice()+order.getPrice()*TAX));
     }
 
     public void onRemovePizzaClick(View view){
