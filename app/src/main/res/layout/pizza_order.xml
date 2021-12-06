@@ -25,6 +25,7 @@
         android:layout_marginLeft="202dp"
         android:layout_marginTop="35dp"
         android:contentDescription="@string/si"
+        android:onClick="onSizeSelected"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -81,7 +82,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         onion = findViewById(R.id.onion);
     }
 
-    public void toppingClick(){
+    public void toppingClick(View view){
         ArrayList<Topping> tops = new ArrayList<>();
         List<Integer> selectedTopIds = toppingGroup.getCheckedChipIds();
         for(Integer id: selectedTopIds){
@@ -103,7 +104,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
                     break;
                 case R.id.ham:
                     tops.add(Topping.HAM);
-
+                    Toast.makeText(getApplicationContext(),"Clicked on Ham",Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.mushroom:
                     tops.add(Topping.MUSHROOM);
@@ -114,8 +115,12 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         price.setText(String.valueOf(initialSmallPizza.getprice()));
     }
 
-    public void onAddToOrderClick(){
-        //add pizza to current order
+    public void onAddToOrderClick(View view){
+        order.addPizza(initialSmallPizza,initialSmallPizza.getprice());
+    }
+
+    public void onSizeSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
     }
 
     @Override
