@@ -7,10 +7,11 @@
 
 package com.example.myapplication;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 //import  proj4.project4.Topping;
 
-public abstract class Pizza {
+public abstract class Pizza implements Serializable {
     protected ArrayList<Topping> toppings = new ArrayList<Topping>();
     protected Size size;
     //public enum Topping {PEPPERONI, HAM, PINEAPPLE, OLIVES, CHICKEN, MUSHROOM, ONION};

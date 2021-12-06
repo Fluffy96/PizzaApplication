@@ -7,12 +7,13 @@
 
 package com.example.myapplication;
 
+import java.io.Serializable;
 import java.util.Locale;
 
 /**
  *
  */
-public class PizzaMaker {
+public class PizzaMaker implements Serializable {
 
     /**
      * This method creates a small pizza with the input flavor

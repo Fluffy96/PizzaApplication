@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,9 +16,11 @@ import java.text.DecimalFormat;
 public class CurrentOrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private DecimalFormat df = new DecimalFormat("#.##");
-    private Order order = new Order();
+    private Order order;
+    private StoreOrders storeOrders;
     private TextView subtotal, salesTax, ordertotal, phoneNumberOrder;
     private ListView currOrderListView;
+    private String number;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,11 +34,20 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
         currOrderListView = findViewById(R.id.currOrderListView);
         Intent intent = getIntent();
         CharSequence number = intent.getStringExtra("NUMBER");
+        order = (Order) intent.getSerializableExtra("Order");
+        storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
         phoneNumberOrder.setText(number);
+
     }
 
     public void onRemovePizzaClick(View view){
+        Toast.makeText(getApplicationContext(),order.getPhoneNum(),Toast.LENGTH_SHORT).show();
+    }
 
+    public void onPlaceOrder(View view){
+
+
+        finish();
     }
 
     @Override

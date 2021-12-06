@@ -19,14 +19,35 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ImageView deluxePizza, hawaiianPizza, pepperoniPizza, cOrder, sOrder;
     private Order order = new Order();
     private StoreOrders storeOrders = new StoreOrders();
+    private double currentOrderTotal;
+    private String currentNumber;
+    private static final int ONE = 1, TWO = 2, THREE = 3, NEG = -1, PHONELENGTH = 10;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
-        order = (Order) intent.getSerializableExtra("Order");
         phoneNumber = findViewById(R.id.phoneNumber);
+        int requestCode = intent.getIntExtra("RequestCode", ONE);
+        if (requestCode == ONE) {
+            order = (Order) intent.getSerializableExtra("Order");
+            currentNumber = intent.getStringExtra("Number");
+        }
+        if(requestCode == TWO){
+            order = (Order) intent.getSerializableExtra("Order");
+            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+            currentOrderTotal = intent.getDoubleExtra("currentOrderTotal", NEG);
+            currentNumber = intent.getStringExtra("number");
+            storeOrders.addOrders(order);
+            storeOrders.addTP(currentOrderTotal);
+            storeOrders.addPhoneNumbers(currentNumber);
+        }
+        if(requestCode == THREE){
+            //NEED TO MOD
+            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+        }
+        phoneNumber.setText(currentNumber);
     }
 
     public void onDeluxeClick(View view){
@@ -37,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if(numberChecker(phoneNumber)) {
             order = new Order(phoneNumber.getText().toString());
             intent.putExtra("Order", order);
-            this.startActivity(intent);
+            this.startActivityForResult(intent, ONE);
         }
     }
 
@@ -49,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if(numberChecker(phoneNumber)) {
             order = new Order(phoneNumber.getText().toString());
             intent.putExtra("Order", order);
-            this.startActivity(intent);
+            this.startActivityForResult(intent, ONE);
         }
     }
 
@@ -61,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if(numberChecker(phoneNumber)) {
             order = new Order(phoneNumber.getText().toString());
             intent.putExtra("Order", order);
-            this.startActivity(intent);
+            this.startActivityForResult(intent, ONE);
         }
     }
 
@@ -69,9 +90,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = new Intent(this, CurrentOrderActivity.class);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
+            intent.putExtra("NUMBER", phoneNumber.getText());
             intent.putExtra("Order", order);
             intent.putExtra("StoreOrders", storeOrders);
-            this.startActivity(intent);
+            this.startActivityForResult(intent, TWO);
         }
     }
 
@@ -80,14 +102,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("NUMBER", phoneNumber.getText()); //might not need
         if(numberChecker(phoneNumber)) {
             intent.putExtra("StoreOrders", storeOrders);
-            this.startActivity(intent);
+            this.startActivityForResult(intent, THREE);
         }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
     }
 
     public boolean numberChecker(TextView t){
         String num = t.getText().toString();
-        if(num.length() == 10){
-            //Toast.makeText(getApplicationContext(),"Correct Length",Toast.LENGTH_SHORT).show();
+        if(num.length() == PHONELENGTH){
             return true;
         }
         else {

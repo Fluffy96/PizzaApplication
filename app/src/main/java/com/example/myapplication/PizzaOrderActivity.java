@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -28,6 +29,8 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
 //    private ObservableList<String> selectTopping = FXCollections.observableArrayList ();
 //    private ObservableList<String> additionalTopping = FXCollections.observableArrayList ();
 
+    private static final int REQUESTCODE = 1;
+
     private DecimalFormat df;
     private ImageView pizza;
     private TextView price;
@@ -36,6 +39,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
     private Spinner size;
     private ChipGroup toppingGroup;
     private Chip pepperoni, pineapple, olives, ham, chicken, mushroom, onion;
+    private String number;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         setTitle("Pizza Order");
         Intent intent = getIntent();
         String pizzaType = intent.getStringExtra("PIZZA");
-        String number = intent.getStringExtra("NUMBER");
-//        order = new Order(number);
+        number = intent.getStringExtra("NUMBER");
         order = (Order) getIntent().getSerializableExtra("Order");
         extra();
         if(pizzaType.equals("deluxe")){
@@ -119,13 +122,16 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
             }
         }
         initialSmallPizza.setToppings(tops);
-        price.setText(df.format(String.valueOf(initialSmallPizza.getprice())));
+        price.setText((CharSequence) df.format(initialSmallPizza.getprice()));
     }
 
     public void onAddToOrderClick(View view){
         order.addPizza(initialSmallPizza,initialSmallPizza.getprice());
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra("Order", order);
+        intent.putExtra("Number", number);
+        intent.putExtra("RequestCode", REQUESTCODE);
+//        setResult(RESULT_OK, intent);
         startActivity(intent);
     }
 

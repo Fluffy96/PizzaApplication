@@ -13,10 +13,12 @@ package com.example.myapplication;
  *
  */
 
+import java.io.Serializable;
+
 /**
  * Method for size object
  */
-public enum Size {
+public enum Size implements Serializable {
     SMALL(0.00), MEDIUM(2.00), LARGE(4.00);
 
     private double price;

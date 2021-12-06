@@ -7,11 +7,12 @@
 
 package com.example.myapplication;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Deluxe extends Pizza{
+public class Deluxe extends Pizza implements Serializable {
 
     public static final double BASEPRICE = 12.99;
     public static final int MINTOPPINGS = 5;

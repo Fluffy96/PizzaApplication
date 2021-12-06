@@ -6,10 +6,12 @@ package com.example.myapplication;
  *
  */
 
+import java.io.Serializable;
+
 /**
  * Creates object of type Topping
  */
-public enum Topping {
+public enum Topping implements Serializable {
     PEPPERONI, HAM, PINEAPPLE, OLIVES, CHICKEN, MUSHROOM, ONION;
 
     /**
