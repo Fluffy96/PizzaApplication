@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,14 +18,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PizzaOrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class PizzaOrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 //    private ObservableList<String> selectTopping = FXCollections.observableArrayList ();
 //    private ObservableList<String> additionalTopping = FXCollections.observableArrayList ();
 
+    private DecimalFormat df;
     private ImageView pizza;
     private TextView price;
     private Order order;
@@ -36,11 +41,12 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pizza_order);
-        setTitle("@strings/potitle");
+        setTitle("Pizza Order");
         Intent intent = getIntent();
         String pizzaType = intent.getStringExtra("PIZZA");
         String number = intent.getStringExtra("NUMBER");
-        order = new Order(number);
+//        order = new Order(number);
+        order = (Order) getIntent().getSerializableExtra("Order");
         extra();
         if(pizzaType.equals("deluxe")){
             pizza.setImageResource(R.drawable.delpizza);
@@ -64,12 +70,13 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         sizes.add("Small");
         sizes.add("Medium");
         sizes.add("Large");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sizes);
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.Size, android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         size.setAdapter(arrayAdapter);
     }
 
     public void extra (){
+        df = new DecimalFormat("#.##");
         pizza = findViewById(R.id.pizza);
         size = findViewById(R.id.sizes);
         toppingGroup = findViewById(R.id.toppingGroup);
@@ -80,6 +87,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         chicken = findViewById(R.id.chicken);
         mushroom = findViewById(R.id.mushroom);
         onion = findViewById(R.id.onion);
+        size.setOnItemSelectedListener(this);
     }
 
     public void toppingClick(View view){
@@ -104,7 +112,6 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
                     break;
                 case R.id.ham:
                     tops.add(Topping.HAM);
-                    Toast.makeText(getApplicationContext(),"Clicked on Ham",Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.mushroom:
                     tops.add(Topping.MUSHROOM);
@@ -112,20 +119,22 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
             }
         }
         initialSmallPizza.setToppings(tops);
-        price.setText(String.valueOf(initialSmallPizza.getprice()));
+        price.setText(df.format(String.valueOf(initialSmallPizza.getprice())));
     }
 
     public void onAddToOrderClick(View view){
         order.addPizza(initialSmallPizza,initialSmallPizza.getprice());
-    }
-
-    public void onSizeSelected(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("Order", order);
+        startActivity(intent);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        String text = parent.getItemAtPosition(position).toString();
+        initialSmallPizza.changeSize(text);
+        initialSmallPizza.getprice();
+        price.setText((CharSequence) df.format(initialSmallPizza.getprice()));
     }
 
     @Override

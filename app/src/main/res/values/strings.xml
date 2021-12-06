@@ -32,6 +32,6 @@
     <string-array name="Size">
         <item>Small</item>
         <item>Medium</item>
-        <item>Learn</item>
+        <item>Large</item>
     </string-array>
 </resources>

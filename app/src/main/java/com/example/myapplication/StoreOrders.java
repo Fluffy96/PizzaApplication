@@ -15,12 +15,13 @@ package com.example.myapplication;
 //import javafx.beans.Observable;
 //import javafx.collections.ObservableList;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Store Order object method
  */
-public class StoreOrders {
+public class StoreOrders implements Serializable {
 
     //private static ArrayList<ObservableList<Orders>> finalOrders = new ArrayList<>();
     private static ArrayList<Double> totalPrices = new ArrayList<>();

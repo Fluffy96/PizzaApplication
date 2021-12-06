@@ -8,10 +8,11 @@
 
 package com.example.myapplication;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class Order {
+public class Order implements Serializable {
     private String phoneNum;
     private ArrayList<Pizza> pizzaList = new ArrayList<>();
     private double price;
