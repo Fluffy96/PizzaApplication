@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class CurrentOrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    private static final double NO_COST = 0.0;
     private DecimalFormat df = new DecimalFormat("#.##");
     private Order order;
     private StoreOrders storeOrders;
@@ -48,9 +49,11 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
             ArrayList<String> listString = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 listString.add(list.get(i).toString());
+                //currOrderListView.addView(list.get(i).toString());
+                //cost = cost + list.get(i).getprice();
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listString);
-            currOrderListView.setAdapter(adapter);
+            ArrayAdapter arr = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listString);
+            currOrderListView.setAdapter(arr);
             subtotal.setText(df.format(order.getPrice()));
             salesTax.setText(df.format(order.getPrice() * TAX));
             ordertotal.setText(df.format(order.getPrice() + order.getPrice() * TAX));
@@ -83,12 +86,17 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listString);
             currOrderListView.setAdapter(adapter);
-            subtotal.setText(df.format(order.getPrice()));
-            salesTax.setText(df.format(order.getPrice() * TAX));
-            ordertotal.setText(df.format(order.getPrice() + order.getPrice() * TAX));
+            double cost = NO_COST;
+            //ArrayList<Pizza> list  = order.getPizzaList();
+            for(int i =0; i< list.size(); i++){
+                //currOrders.add(list.get(i).toString());
+                cost = cost + list.get(i).getprice();
+            }
+            subtotal.setText(df.format(cost));
+            System.out.println(df.format(cost));
+            salesTax.setText(df.format(cost * TAX));
+            ordertotal.setText(df.format(cost + cost * TAX));
         }
-
-
     }
 
     public void onPlaceOrder(View view){

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,10 +34,14 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
         sOrderListView = findViewById(R.id.sOrderListView);
         orderTotal = findViewById(R.id.orderTotal);
         cancelOrder = findViewById(R.id.button3)    ;
-        numList = storeOrders.getPhoneNumberList();
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, numList);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        numbers.setAdapter(arrayAdapter);
+        Intent intent = getIntent();
+        storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+        if(storeOrders!=null) {
+            numList = storeOrders.getPhoneNumberList();
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, numList);
+            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            numbers.setAdapter(arrayAdapter);
+        }
     }
 
     public void onCancelOrder(View view){

@@ -34,6 +34,7 @@ public class StoreOrders implements Serializable {
      * Generic constructor method for StoreOrders
      */
     public StoreOrders(){
+        this.addOrders(new Order("Select"));
     }
 
     /**
