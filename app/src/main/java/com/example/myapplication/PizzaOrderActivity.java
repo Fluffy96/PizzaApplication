@@ -141,9 +141,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
 //        System.out.println(order.getPrice());
 //        setResult(RESULT_OK, data);
         Intent data = new Intent();
-        data.putExtra("myData1", order.getPhoneNum());
         data.putExtra("myData3", order);
-        data.putExtra("myData2", "Data 2 value");
 // Activity finished ok, return the data
         setResult(RESULT_OK, data);
         finish();

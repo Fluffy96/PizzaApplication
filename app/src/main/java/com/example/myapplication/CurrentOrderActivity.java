@@ -24,6 +24,7 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
     private ListView currOrderListView;
     ArrayAdapter<String> pizzas;
     private String number;
+    private int removePosition = -1;
     private static final double TAX = 0.06625;
 
     @Override
@@ -56,7 +57,9 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
             currOrderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    System.out.println(listString.get(position));
+                    String str = "Clicked on "+ listString.get(position) +" if you press remove it will be removed";
+                    Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
+                    removePosition = position;
                 }
             });
         }
@@ -64,7 +67,28 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
 
     public void onRemovePizzaClick(View view){
         int index = currOrderListView.getCheckedItemPosition();
-        Toast.makeText(getApplicationContext(), String.valueOf(index), Toast.LENGTH_SHORT).show();
+
+        if(removePosition==-1){
+            Toast.makeText(getApplicationContext(), "Have not clicked on anything to remove", Toast.LENGTH_SHORT).show();
+        }else{
+            order.removePizza(order.getPizzaList().get(removePosition));
+            Intent data = new Intent();
+            data.putExtra("myData3", order);
+// Activity finished ok, return the data
+            setResult(RESULT_OK, data);
+            ArrayList<Pizza> list  = order.getPizzaList();
+            ArrayList<String> listString = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                listString.add(list.get(i).toString());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listString);
+            currOrderListView.setAdapter(adapter);
+            subtotal.setText(df.format(order.getPrice()));
+            salesTax.setText(df.format(order.getPrice() * TAX));
+            ordertotal.setText(df.format(order.getPrice() + order.getPrice() * TAX));
+        }
+
+
     }
 
     public void onPlaceOrder(View view){
