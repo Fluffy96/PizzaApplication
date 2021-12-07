@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            if(order == null || !order.getPhoneNum().equals(phoneNumber.getText())) {
+            if(order == null || order.getPhoneNum().equals(phoneNumber.getText())) {
                 order = new Order(phoneNumber.getText().toString());
             }
             intent.putExtra("Order", order);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            if(order == null || !order.getPhoneNum().equals(phoneNumber.getText())) {
+            if(order == null || order.getPhoneNum().equals(phoneNumber.getText())) {
                 order = new Order(phoneNumber.getText().toString());
             }
             intent.putExtra("Order", order);
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            if(order == null || !order.getPhoneNum().equals(phoneNumber.getText())) {
+            if(order == null || order.getPhoneNum().equals(phoneNumber.getText())) {
                 order = new Order(phoneNumber.getText().toString());
             }
             intent.putExtra("Order", order);
