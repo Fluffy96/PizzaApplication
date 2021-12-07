@@ -16,6 +16,7 @@ import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    private static final int REQUEST_CODE = 1;
     private TextView phoneNumber;
     private ImageView deluxePizza, hawaiianPizza, pepperoniPizza, cOrder, sOrder;
     private Order order;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onDeluxeClick(View view){
-        Intent intent = new Intent(getApplicationContext(), PizzaOrderActivity.class);
+        Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "deluxe";
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
@@ -113,26 +114,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    @SuppressLint("MissingSuperCall")
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-//        super.onActivityResult(requestCode, resultCode, intent);
-        //int requestCode = ONE;//intent.getIntExtra("RequestCode", ONE);
-        if (requestCode == ONE) {
-            order = (Order) getIntent().getSerializableExtra("Order");
-            //currentNumber = intent.getStringExtra("Number");
-        }
-        if(requestCode == TWO){
-            order = (Order) intent.getSerializableExtra("Order");
-            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
-            currentOrderTotal = intent.getDoubleExtra("currentOrderTotal", NEG);
-            //currentNumber = intent.getStringExtra("number");
-            storeOrders.addOrders(order);
-            storeOrders.addTP(currentOrderTotal);
-            storeOrders.addPhoneNumbers(currentNumber);
-        }
-        if(requestCode == THREE){
-            //NEED TO MOD
-            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println(order.getPizzaList().toString());
+        System.out.println("maybe");
+//        if (resultCode == RESULT_OK) {
+//            System.out.println(getIntent().getStringExtra("num"));
+//            order = (Order) getIntent().getSerializableExtra("Order");
+//            System.out.println(order.getPizzaList().toString());
+//
+//        }
+        System.out.println(data.getStringExtra("myData1"));
+        order = (Order) data.getSerializableExtra("myData3");
+        System.out.println(order.getPizzaList().toString());
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            if (data.hasExtra("myData1")) {
+                System.out.println(data.getStringExtra("myData1"));
+            }
         }
     }
 

@@ -16,7 +16,6 @@ public class Order implements Serializable {
     private String phoneNum;
     private ArrayList<Pizza> pizzaList = new ArrayList<>();
     private double price = 0;
-    private DecimalFormat df = new DecimalFormat("#.##");
 
     /**
      * This constructor creates an Orders object with a given customer phone number

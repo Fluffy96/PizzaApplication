@@ -50,6 +50,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         String pizzaType = intent.getStringExtra("PIZZA");
         number = intent.getStringExtra("NUMBER");
         order = (Order) getIntent().getSerializableExtra("Order");
+        System.out.println(order.getPhoneNum());
         extra();
         if(pizzaType.equals("deluxe")){
             pizza.setImageResource(R.drawable.delpizza);
@@ -122,7 +123,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
             }
         }
         initialSmallPizza.setToppings(tops);
-        price.setText((CharSequence) df.format(initialSmallPizza.getprice()));
+        price.setText(String.valueOf(initialSmallPizza.getprice()));
     }
 
     public void onAddToOrderClick(View view){
@@ -134,8 +135,16 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
 //        intent.putExtra("RequestCode", REQUESTCODE);
 ////        setResult(RESULT_OK, intent);
 //        startActivity(intent);
+//        Intent data = new Intent(this, MainActivity.class);
+//        data.putExtra("num",order.getPhoneNum());
+//        data.putExtra("Order",order);
+//        System.out.println(order.getPrice());
+//        setResult(RESULT_OK, data);
         Intent data = new Intent();
-        data.putExtra("Order", order);
+        data.putExtra("myData1", order.getPhoneNum());
+        data.putExtra("myData3", order);
+        data.putExtra("myData2", "Data 2 value");
+// Activity finished ok, return the data
         setResult(RESULT_OK, data);
         finish();
     }
@@ -145,7 +154,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         String text = parent.getItemAtPosition(position).toString();
         initialSmallPizza.changeSize(text);
         initialSmallPizza.getprice();
-        price.setText((CharSequence) df.format(initialSmallPizza.getprice()));
+        price.setText((CharSequence) String.valueOf(initialSmallPizza.getprice()));
     }
 
     @Override
