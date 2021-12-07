@@ -118,15 +118,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println(order.getPizzaList().toString());
         System.out.println("maybe");
-//        if (resultCode == RESULT_OK) {
-//            System.out.println(getIntent().getStringExtra("num"));
-//            order = (Order) getIntent().getSerializableExtra("Order");
-//            System.out.println(order.getPizzaList().toString());
-//
-//        }
         System.out.println(data.getStringExtra("myData1"));
         Order newOrder = (Order) data.getSerializableExtra("myData3");
-        order.addPizza(newOrder.getPizzaList().get(0), newOrder.getPrice());
+        order= newOrder;
         System.out.println(order.getPizzaList().toString());
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             if (data.hasExtra("myData1")) {
