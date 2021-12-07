@@ -125,7 +125,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //
 //        }
         System.out.println(data.getStringExtra("myData1"));
-        order = (Order) data.getSerializableExtra("myData3");
+        Order newOrder = (Order) data.getSerializableExtra("myData3");
+        order.addPizza(newOrder.getPizzaList().get(0), newOrder.getPrice());
         System.out.println(order.getPizzaList().toString());
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             if (data.hasExtra("myData1")) {
