@@ -77,13 +77,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onCOrderClick(View view){
-        Intent intent = new Intent(this, CurrentOrderActivity.class);
-        intent.putExtra("NUMBER", phoneNumber.getText());
-        if(numberChecker(phoneNumber)) {
-            intent.putExtra("NUMBER", order.getPhoneNum());
-            intent.putExtra("Order", order);
-            intent.putExtra("StoreOrders", storeOrders);
-            this.startActivityForResult(intent, TWO);
+        if(order!= null) {
+            Intent intent = new Intent(this, CurrentOrderActivity.class);
+            intent.putExtra("NUMBER", phoneNumber.getText());
+            if (numberChecker(phoneNumber)) {
+                intent.putExtra("NUMBER", order.getPhoneNum());
+                intent.putExtra("Order", order);
+                intent.putExtra("StoreOrders", storeOrders);
+                this.startActivityForResult(intent, TWO);
+            }
+        }else{
+            Toast.makeText(getApplicationContext(),"Add pizzas to order first",Toast.LENGTH_SHORT).show();
         }
     }
 
