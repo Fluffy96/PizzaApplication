@@ -4,13 +4,21 @@
  * @author Divyesh Nemam Baskaran, Viraj Patel
  *
  */
+/**
+ * This class is the UI that contains the run function to interract with album collections
 
+ * @author Divyesh Nemam Baskaran, Viraj Patel
+ *
+ */
 package com.example.myapplication;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 //import  proj4.project4.Topping;
 
+/**
+ * method defines objects of type pizza
+ */
 public abstract class Pizza implements Serializable {
     protected ArrayList<Topping> toppings = new ArrayList<Topping>();
     protected Size size;

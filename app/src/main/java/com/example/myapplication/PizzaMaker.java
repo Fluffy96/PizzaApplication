@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Locale;
 
 /**
- *
+ *This class makes pizza of different types
  */
 public class PizzaMaker implements Serializable {
 

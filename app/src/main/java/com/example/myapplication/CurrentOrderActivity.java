@@ -1,5 +1,10 @@
 package com.example.myapplication;
+/**
+ * This class is the UI that contains the run function to interract with album collections
 
+ * @author Divyesh Nemam Baskaran, Viraj Patel
+ *
+ */
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,10 +19,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-
+/**
+ * This class controls what happens on the current order page
+ */
 public class CurrentOrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private static final double NO_COST = 0.0;
+    private static final double NO_COST = 0;
     private DecimalFormat df = new DecimalFormat("#.##");
     private Order order;
     private StoreOrders storeOrders;
@@ -28,6 +35,10 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
     private int removePosition = -1;
     private static final double TAX = 0.06625;
 
+    /**
+     *  On start up of the page it populates list view of the currently ordered pizzas
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +60,9 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
             ArrayList<String> listString = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 listString.add(list.get(i).toString());
-                //currOrderListView.addView(list.get(i).toString());
-                //cost = cost + list.get(i).getprice();
             }
-            ArrayAdapter arr = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listString);
-            currOrderListView.setAdapter(arr);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listString);
+            currOrderListView.setAdapter(adapter);
             subtotal.setText(df.format(order.getPrice()));
             salesTax.setText(df.format(order.getPrice() * TAX));
             ordertotal.setText(df.format(order.getPrice() + order.getPrice() * TAX));
@@ -68,6 +77,10 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
         }
     }
 
+    /**
+     * Method used to remove pizzas from the array list
+     * @param view
+     */
     public void onRemovePizzaClick(View view){
         int index = currOrderListView.getCheckedItemPosition();
 
@@ -77,7 +90,6 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
             order.removePizza(order.getPizzaList().get(removePosition));
             Intent data = new Intent();
             data.putExtra("myData3", order);
-// Activity finished ok, return the data
             setResult(RESULT_OK, data);
             ArrayList<Pizza> list  = order.getPizzaList();
             ArrayList<String> listString = new ArrayList<>();
@@ -97,19 +109,35 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
             salesTax.setText(df.format(cost * TAX));
             ordertotal.setText(df.format(cost + cost * TAX));
         }
+
+
     }
 
+    /**
+     * Methos is used to add the order to the store order
+     * @param view
+     */
     public void onPlaceOrder(View view){
-
-
         finish();
     }
 
+    /**
+     * Methos id for the listview and if soemthing is clicked in said list
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
     }
 
+    /**
+     * What to do if user is not interacting with the gui
+     *
+     * @param parent
+     */
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 

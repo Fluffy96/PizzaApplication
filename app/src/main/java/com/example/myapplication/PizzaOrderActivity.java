@@ -1,5 +1,10 @@
 package com.example.myapplication;
+/**
+ * This class is the UI that contains the run function to interract with album collections
 
+ * @author Divyesh Nemam Baskaran, Viraj Patel
+ *
+ */
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,13 +29,12 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class controls the gui for ordering the different types of pizza
+ */
 public class PizzaOrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-//    private ObservableList<String> selectTopping = FXCollections.observableArrayList ();
-//    private ObservableList<String> additionalTopping = FXCollections.observableArrayList ();
-
     private static final int REQUESTCODE = 1;
-
     private DecimalFormat df;
     private ImageView pizza;
     private TextView price;
@@ -41,6 +45,10 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
     private Chip pepperoni, pineapple, olives, ham, chicken, mushroom, onion;
     private String number;
 
+    /**
+     * On start up of the page it turns on toppings that go with the type of pizza
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +87,9 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         size.setAdapter(arrayAdapter);
     }
 
+    /**
+     * Contains initialization of other variables needed throughout the program
+     */
     public void extra (){
         df = new DecimalFormat("#.##");
         pizza = findViewById(R.id.pizza);
@@ -94,6 +105,10 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         size.setOnItemSelectedListener(this);
     }
 
+    /**
+     * Allows person to change the alotted toppings
+     * @param view
+     */
     public void toppingClick(View view){
         ArrayList<Topping> tops = new ArrayList<>();
         List<Integer> selectedTopIds = toppingGroup.getCheckedChipIds();
@@ -126,27 +141,25 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         price.setText((CharSequence) df.format(initialSmallPizza.getprice()));
     }
 
+    /**
+     * Adss the pizza to the current order
+     * @param view
+     */
     public void onAddToOrderClick(View view){
         order.addPizza(initialSmallPizza,initialSmallPizza.getprice());
-
-//        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//        intent.putExtra("Order", order);
-//        intent.putExtra("Number", number);
-//        intent.putExtra("RequestCode", REQUESTCODE);
-////        setResult(RESULT_OK, intent);
-//        startActivity(intent);
-//        Intent data = new Intent(this, MainActivity.class);
-//        data.putExtra("num",order.getPhoneNum());
-//        data.putExtra("Order",order);
-//        System.out.println(order.getPrice());
-//        setResult(RESULT_OK, data);
         Intent data = new Intent();
         data.putExtra("myData3", order);
-// Activity finished ok, return the data
         setResult(RESULT_OK, data);
         finish();
     }
 
+    /**
+     * Allows user to change the size of the pizza
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
@@ -155,6 +168,10 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         price.setText((CharSequence) df.format(initialSmallPizza.getprice()));
     }
 
+    /**
+     * what to do when user is not interacting with the gui
+     * @param parent
+     */
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 

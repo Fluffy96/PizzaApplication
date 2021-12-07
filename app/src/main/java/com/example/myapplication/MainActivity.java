@@ -1,7 +1,11 @@
 package com.example.myapplication;
+/**
+ * This class is the UI that contains the run function to interract with album collections
 
+ * @author Divyesh Nemam Baskaran, Viraj Patel
+ *
+ */
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +18,9 @@ import android.widget.Toast;
 
 import java.io.Serializable;
 
+/**
+ * This class runs the opening page of the gui
+ */
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static final int REQUEST_CODE = 1;
@@ -25,6 +32,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private String currentNumber;
     private static final int ONE = 1, TWO = 2, THREE = 3, NEG = -1, PHONELENGTH = 10;
 
+    /**
+     * Method sets up the images on the parent gui page
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         phoneNumber.setText(currentNumber);
     }
 
+    /**
+     * Gui for when deluxe pizza photo is click
+     * @param view
+     */
     public void onDeluxeClick(View view){
         Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "deluxe";
@@ -48,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+    /**
+     * Gui for when Hawaiian pizza photo is click
+     * @param view
+     */
     public void onHawaiianClick(View view){
         Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "hawaiian";
@@ -62,6 +81,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+    /**
+     * Gui for when Pepperonni click
+     * @param view
+     */
     public void onPepperoniClick(View view){
         Intent intent = new Intent(this, PizzaOrderActivity.class);
         String pizzaType = "pepperoni";
@@ -76,6 +99,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+    /**
+     * Gui for when current orders is clicked
+     * @param view
+     */
     public void onCOrderClick(View view){
         if(order!= null) {
             Intent intent = new Intent(this, CurrentOrderActivity.class);
@@ -91,6 +118,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+    /**
+     * For when store order is clicked
+     * @param view
+     */
     public void onSOrderClick(View view){
         Intent intent = new Intent(this, StoreOrdersActivity.class);
         intent.putExtra("NUMBER", phoneNumber.getText()); //might not need
@@ -100,14 +131,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-//    @SuppressLint("MissingSuperCall")
-//    @Override
+    /**
+     * Sets up main gui after you come back from deluxe, hawaiian, or pepperoni click
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         order = (Order) data.getSerializableExtra("myData3");
 
     }
 
+    /**
+     * Makes sure that length of the phone number is atleast 10 digits long
+     * @param t
+     * @return
+     */
     public boolean numberChecker(TextView t){
         String num = t.getText().toString();
         if(num.length() == PHONELENGTH){
@@ -119,11 +159,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+    /**
+     * Selects items
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
     }
 
+    /**
+     * if nothing is clicked
+     * @param parent
+     */
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 

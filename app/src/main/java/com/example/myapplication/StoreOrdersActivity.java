@@ -1,5 +1,10 @@
 package com.example.myapplication;
+/**
+ * This class is the UI that contains the run function to interract with album collections
 
+ * @author Divyesh Nemam Baskaran, Viraj Patel
+ *
+ */
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+/**
+ * This class handels the store order gui
+ */
 public class StoreOrdersActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private Spinner numbers;
@@ -26,6 +34,10 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
     private ArrayList<String> numList;
     private ArrayList<Double> cost;
 
+    /**
+     * Thise method sets up the gui initially when it is first opened up too
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +56,10 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
         }
     }
 
+    /**
+     * Allwos user to cancel an order that was created
+     * @param view
+     */
     public void onCancelOrder(View view){
         sOrderListView.getOnItemSelectedListener();
         storeOrders.removeOrder(numberClicked);
@@ -52,11 +68,22 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
         cost = storeOrders.getTotalPrices();
     }
 
+    /**
+     * Used to select users in the spinner structure
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
     }
 
+    /**
+     * How the gui reacts when there is zero user input
+     * @param parent
+     */
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 

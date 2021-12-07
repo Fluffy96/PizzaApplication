@@ -4,13 +4,21 @@
  * @author Divyesh Nemam Baskaran, Viraj Patel
  *
  */
+/**
+ * This class is the UI that contains the run function to interract with album collections
 
+ * @author Divyesh Nemam Baskaran, Viraj Patel
+ *
+ */
 package com.example.myapplication;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Creates Hawaaian type pizza
+ */
 public class Hawaiian extends Pizza implements Serializable {
 
     public static final double BASEPRICE = 10.99;

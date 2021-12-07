@@ -7,11 +7,19 @@
  */
 
 package com.example.myapplication;
+/**
+ * This class is the UI that contains the run function to interract with album collections
 
+ * @author Divyesh Nemam Baskaran, Viraj Patel
+ *
+ */
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Class  defines the order object
+ */
 public class Order implements Serializable {
     private String phoneNum;
     private ArrayList<Pizza> pizzaList = new ArrayList<>();

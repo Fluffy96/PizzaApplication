@@ -6,12 +6,20 @@
  */
 
 package com.example.myapplication;
+/**
+ * This class is the UI that contains the run function to interract with album collections
 
+ * @author Divyesh Nemam Baskaran, Viraj Patel
+ *
+ */
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Class defines deluxe type pizza
+ */
 public class Deluxe extends Pizza implements Serializable {
 
     public static final double BASEPRICE = 12.99;
