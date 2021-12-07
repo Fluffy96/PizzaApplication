@@ -47,19 +47,16 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
             ArrayList<String> listString = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 listString.add(list.get(i).toString());
-                //currOrderListView.addView(list.get(i).toString());
-                //cost = cost + list.get(i).getprice();
             }
-            ArrayAdapter arr = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listString);
-            currOrderListView.setAdapter(arr);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listString);
+            currOrderListView.setAdapter(adapter);
             subtotal.setText(df.format(order.getPrice()));
             salesTax.setText(df.format(order.getPrice() * TAX));
             ordertotal.setText(df.format(order.getPrice() + order.getPrice() * TAX));
-            currOrderListView.setOnClickListener(new View.OnClickListener() {
+            currOrderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onClick(View v) {
-                    AdapterView.OnItemSelectedListener i = currOrderListView.getOnItemSelectedListener();
-
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    System.out.println(listString.get(position));
                 }
             });
         }
