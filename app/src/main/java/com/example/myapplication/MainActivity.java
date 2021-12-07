@@ -114,7 +114,32 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+//    @SuppressLint("MissingSuperCall")
+//    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, intent);
+//        //int requestCode = ONE;//intent.getIntExtra("RequestCode", ONE);
+//        //super.onActivityResult(requestCode, resultCode, intent);
+//        if (requestCode == ONE) {
+//            Bundle b = getIntent().getExtras();
+//            order = (Order) intent.getSerializableExtra("Order");
+//            if (order == null) {
+//                Toast.makeText(getApplicationContext(),"NULL",Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//        if (requestCode == TWO) {
+//            order = (Order) intent.getSerializableExtra("Order");
+//            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+//            currentOrderTotal = intent.getDoubleExtra("currentOrderTotal", NEG);
+//            //currentNumber = intent.getStringExtra("number");
+//            storeOrders.addOrders(order);
+//            storeOrders.addTP(currentOrderTotal);
+//            storeOrders.addPhoneNumbers(currentNumber);
+//        }
+//        if (requestCode == THREE) {
+//            //NEED TO MOD
+//            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+//        }
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println(order.getPizzaList().toString());
         System.out.println("maybe");

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 
 public class CurrentOrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -36,18 +37,30 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
         phoneNumberOrder = findViewById(R.id.phoneNumberOrder);
         currOrderListView = findViewById(R.id.currOrderListView);
         Intent intent = getIntent();
-        CharSequence number = intent.getStringExtra("NUMBER");
         order = (Order) intent.getSerializableExtra("Order");
+        number = order.getPhoneNum();
         storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
         //
         phoneNumberOrder.setText(order.getPhoneNum());
-        subtotal.setText(df.format(order.getPrice()));
-        salesTax.setText(df.format(order.getPrice()*TAX));
-        ordertotal.setText(df.format(order.getPrice()+order.getPrice()*TAX));
+        if(order.getPizzaList()!=null) {
+            ArrayList<Pizza> list  = order.getPizzaList();
+            ArrayList<String> listString = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                listString.add(list.get(i).toString());
+                //currOrderListView.addView(list.get(i).toString());
+                //cost = cost + list.get(i).getprice();
+            }
+            ArrayAdapter arr = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listString);
+            currOrderListView.setAdapter(arr);
+            subtotal.setText(df.format(order.getPrice()));
+            salesTax.setText(df.format(order.getPrice() * TAX));
+            ordertotal.setText(df.format(order.getPrice() + order.getPrice() * TAX));
+        }
     }
 
     public void onRemovePizzaClick(View view){
-        Toast.makeText(getApplicationContext(),order.getPhoneNum(),Toast.LENGTH_SHORT).show();
+        int index = currOrderListView.getCheckedItemPosition();
+        Toast.makeText(getApplicationContext(), String.valueOf(index), Toast.LENGTH_SHORT).show();
     }
 
     public void onPlaceOrder(View view){

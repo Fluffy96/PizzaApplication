@@ -123,7 +123,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
             }
         }
         initialSmallPizza.setToppings(tops);
-        price.setText(String.valueOf(initialSmallPizza.getprice()));
+        price.setText((CharSequence) df.format(initialSmallPizza.getprice()));
     }
 
     public void onAddToOrderClick(View view){
@@ -154,7 +154,7 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         String text = parent.getItemAtPosition(position).toString();
         initialSmallPizza.changeSize(text);
         initialSmallPizza.getprice();
-        price.setText((CharSequence) String.valueOf(initialSmallPizza.getprice()));
+        price.setText((CharSequence) df.format(initialSmallPizza.getprice()));
     }
 
     @Override
