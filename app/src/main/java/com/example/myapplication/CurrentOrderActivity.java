@@ -55,6 +55,13 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
             subtotal.setText(df.format(order.getPrice()));
             salesTax.setText(df.format(order.getPrice() * TAX));
             ordertotal.setText(df.format(order.getPrice() + order.getPrice() * TAX));
+            currOrderListView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AdapterView.OnItemSelectedListener i = currOrderListView.getOnItemSelectedListener();
+
+                }
+            });
         }
     }
 

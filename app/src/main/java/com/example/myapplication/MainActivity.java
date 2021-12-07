@@ -31,24 +31,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         phoneNumber = findViewById(R.id.phoneNumber);
-//        int requestCode = ONE;//intent.getIntExtra("RequestCode", ONE);
-//        if (requestCode == ONE) {
-//            order = (Order) intent.getSerializableExtra("Order");
-//            currentNumber = intent.getStringExtra("Number");
-//        }
-//        if(requestCode == TWO){
-//            order = (Order) intent.getSerializableExtra("Order");
-//            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
-//            currentOrderTotal = intent.getDoubleExtra("currentOrderTotal", NEG);
-//            currentNumber = intent.getStringExtra("number");
-//            storeOrders.addOrders(order);
-//            storeOrders.addTP(currentOrderTotal);
-//            storeOrders.addPhoneNumbers(currentNumber);
-//        }
-//        if(requestCode == THREE){
-//            //NEED TO MOD
-//            storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
-//        }
         phoneNumber.setText(currentNumber);
     }
 
