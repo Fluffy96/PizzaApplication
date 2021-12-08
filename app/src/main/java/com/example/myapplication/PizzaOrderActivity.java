@@ -151,6 +151,13 @@ public class PizzaOrderActivity extends AppCompatActivity implements AdapterView
         data.putExtra("order", order);
         setResult(RESULT_OK, data);
         finish();
+//        order.addPizza(initialSmallPizza,initialSmallPizza.getprice());
+//        Intent data = new Intent();
+//        Bundle b = data.getExtras();
+//        b.putSerializable("order", order);
+//        data.putExtras(b);
+//        setResult(RESULT_OK, data);
+//        finish();
     }
 
     /**

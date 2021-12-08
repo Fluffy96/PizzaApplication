@@ -121,10 +121,12 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
         if(storeOrders.isIn(number) == false) {
             storeOrders.addOrders(order);
             Intent data = new Intent();
-            Bundle b = data.getExtras();
-            b.putSerializable("order", order);
-            b.putSerializable("storeOrders", storeOrders);
-            data.putExtras(b);
+            //Bundle b = data.getExtras();
+            //b.putSerializable("order", order);
+            //b.putSerializable("storeOrders", storeOrders);
+            //data.putExtras(b);
+            data.putExtra("order", order);
+            data.putExtra("storeOrders", storeOrders);
             setResult(RESULT_OK, data);
             finish();
         }

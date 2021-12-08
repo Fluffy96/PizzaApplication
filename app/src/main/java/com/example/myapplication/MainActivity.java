@@ -141,15 +141,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
      */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Bundle b = data.getExtras();
-        order = (Order) b.getSerializable("order");
+        //Bundle b = getIntent().getExtras();
+        order = (Order) data.getSerializableExtra("order");
         if(requestCode == TWO){
-            storeOrders = (StoreOrders) b.getSerializable("storeOrders");
+            storeOrders = (StoreOrders) data.getSerializableExtra("storeOrders");
             ArrayList<String> numList = storeOrders.getPhoneNumberList();
             Toast.makeText(getApplicationContext(),(numList.isEmpty())?"NumList Empty":numList.get(0),Toast.LENGTH_SHORT).show();
         }
         if(requestCode == THREE){
-            storeOrders = (StoreOrders) b.getSerializable("storeOrders");
+            storeOrders = (StoreOrders) data.getSerializableExtra("storeOrders");
             ArrayList<String> numList = storeOrders.getPhoneNumberList();
             Toast.makeText(getApplicationContext(),(numList.isEmpty())?"NumList Empty":numList.get(0),Toast.LENGTH_SHORT).show();
         }
