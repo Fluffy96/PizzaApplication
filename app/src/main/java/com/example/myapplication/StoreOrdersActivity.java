@@ -66,11 +66,17 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      * @param view
      */
     public void onCancelOrder(View view){
-        sOrderListView.getOnItemSelectedListener();
-        storeOrders.removeOrder(numberClicked);
-        numList = storeOrders.getPhoneNumberList();
-        order = storeOrders.getOrders();
-        cost = storeOrders.getTotalPrices();
+        if(numberClicked!=null) {
+            sOrderListView.getOnItemSelectedListener();
+            storeOrders.removeOrder(numberClicked);
+            numList = storeOrders.getPhoneNumberList();
+            order = storeOrders.getOrders();
+            cost = storeOrders.getTotalPrices();
+        }
+        Intent i = new Intent();
+        i.putExtra("storeOrders", storeOrders);
+        setResult(RESULT_OK, i);
+        finish();
     }
 
     /**
@@ -82,7 +88,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String num = parent.getItemAtPosition(position).toString();
+        numberClicked = parent.getItemAtPosition(position).toString();
         ArrayList<Order> order = storeOrders.getOrders();
         Order o = order.get(position);
         ArrayList<Pizza> p = o.getPizzaList();

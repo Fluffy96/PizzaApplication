@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * This class runs the opening page of the gui
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int REQUEST_CODE = 1;
     private TextView phoneNumber;
     private ImageView deluxePizza, hawaiianPizza, pepperoniPizza, cOrder, sOrder;
-    private Order order=null;
+    private Order order = null;
     private StoreOrders storeOrders = new StoreOrders();
     private double currentOrderTotal;
     private String currentNumber;
@@ -126,10 +127,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = new Intent(this, StoreOrdersActivity.class);
         intent.putExtra("NUMBER", phoneNumber.getText()); //might not need
         intent.putExtra("storeOrders", storeOrders);
-        if(numberChecker(phoneNumber)) {
+        //if(numberChecker(phoneNumber)) {
             intent.putExtra("StoreOrders", storeOrders);
             this.startActivityForResult(intent, THREE);
-        }
+        //}
     }
 
     /**
@@ -140,9 +141,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
      */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        order = (Order) data.getSerializableExtra("order");
+        Bundle b = data.getExtras();
+        order = (Order) b.getSerializable("order");
         if(requestCode == TWO){
-            storeOrders = (StoreOrders) data.getSerializableExtra("storeOrders");
+            storeOrders = (StoreOrders) b.getSerializable("storeOrders");
+            ArrayList<String> numList = storeOrders.getPhoneNumberList();
+            Toast.makeText(getApplicationContext(),(numList.isEmpty())?"NumList Empty":numList.get(0),Toast.LENGTH_SHORT).show();
+        }
+        if(requestCode == THREE){
+            storeOrders = (StoreOrders) b.getSerializable("storeOrders");
+            ArrayList<String> numList = storeOrders.getPhoneNumberList();
+            Toast.makeText(getApplicationContext(),(numList.isEmpty())?"NumList Empty":numList.get(0),Toast.LENGTH_SHORT).show();
         }
     }
 
