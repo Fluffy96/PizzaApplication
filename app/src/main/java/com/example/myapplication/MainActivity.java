@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            if(order == null || (order.getPhoneNum().equals(phoneNumber.getText()))) {
+            if(order == null || !(order.getPhoneNum().contentEquals(phoneNumber.getText()))) {
                 order = new Order(phoneNumber.getText().toString());
             }
             intent.putExtra("Order", order);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            if(order == null || (order.getPhoneNum().equals(phoneNumber.getText()))) {
+            if(order == null || !(order.getPhoneNum().contentEquals(phoneNumber.getText()))) {
                 order = new Order(phoneNumber.getText().toString());
             }
             intent.putExtra("Order", order);
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("PIZZA", pizzaType);
         intent.putExtra("NUMBER", phoneNumber.getText());
         if(numberChecker(phoneNumber)) {
-            if(order == null || (order.getPhoneNum().equals(phoneNumber.getText()))) {
+            if(order == null || !(order.getPhoneNum().contentEquals(phoneNumber.getText()))) {
                 order = new Order(phoneNumber.getText().toString());
             }
             intent.putExtra("Order", order);
@@ -141,15 +141,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
      */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //Bundle b = getIntent().getExtras();
-        order = (Order) data.getSerializableExtra("order");
+        Bundle b = data.getExtras();
+        order = (Order) b.getSerializable("order");
         if(requestCode == TWO){
-            storeOrders = (StoreOrders) data.getSerializableExtra("storeOrders");
+            storeOrders = (StoreOrders) b.getSerializable("storeOrders");
             ArrayList<String> numList = storeOrders.getPhoneNumberList();
             Toast.makeText(getApplicationContext(),(numList.isEmpty())?"NumList Empty":numList.get(0),Toast.LENGTH_SHORT).show();
         }
         if(requestCode == THREE){
-            storeOrders = (StoreOrders) data.getSerializableExtra("storeOrders");
+            storeOrders = (StoreOrders) b.getSerializable("storeOrders");
             ArrayList<String> numList = storeOrders.getPhoneNumberList();
             Toast.makeText(getApplicationContext(),(numList.isEmpty())?"NumList Empty":numList.get(0),Toast.LENGTH_SHORT).show();
         }
