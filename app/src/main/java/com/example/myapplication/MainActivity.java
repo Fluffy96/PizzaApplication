@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onSOrderClick(View view){
         Intent intent = new Intent(this, StoreOrdersActivity.class);
         intent.putExtra("NUMBER", phoneNumber.getText()); //might not need
+        intent.putExtra("storeOrders", storeOrders);
         if(numberChecker(phoneNumber)) {
             intent.putExtra("StoreOrders", storeOrders);
             this.startActivityForResult(intent, THREE);
@@ -139,8 +140,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
      */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        order = (Order) data.getSerializableExtra("myData3");
-
+        order = (Order) data.getSerializableExtra("order");
+        if(requestCode == TWO){
+            storeOrders = (StoreOrders) data.getSerializableExtra("storeOrders");
+        }
     }
 
     /**

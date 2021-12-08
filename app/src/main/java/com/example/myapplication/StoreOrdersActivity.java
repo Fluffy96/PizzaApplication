@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,17 +48,21 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
         orderTotal = findViewById(R.id.orderTotal);
         cancelOrder = findViewById(R.id.button3)    ;
         Intent intent = getIntent();
-        storeOrders = (StoreOrders) intent.getSerializableExtra("StoreOrders");
+        storeOrders = (StoreOrders) intent.getSerializableExtra("storeOrders");
         if(storeOrders!=null) {
             numList = storeOrders.getPhoneNumberList();
+            Toast.makeText(getApplicationContext(),(numList.isEmpty())?"NumList Empty":numList.get(0),Toast.LENGTH_SHORT).show();
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, numList);
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             numbers.setAdapter(arrayAdapter);
         }
+        else {
+            Toast.makeText(getApplicationContext(),"NULL",Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
-     * Allwos user to cancel an order that was created
+     * Allows user to cancel an order that was created
      * @param view
      */
     public void onCancelOrder(View view){
@@ -77,7 +82,17 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        String num = parent.getItemAtPosition(position).toString();
+        ArrayList<Order> order = storeOrders.getOrders();
+        Order o = order.get(position);
+        ArrayList<Pizza> p = o.getPizzaList();
+        ArrayList<String> pString = new ArrayList<String>();
+        for (int i = 0; i < p.size(); i++) {
+            pString.add(p.get(i).toString());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pString);
+        sOrderListView.setAdapter(adapter);
+        orderTotal.setText(o.toString());
     }
 
     /**

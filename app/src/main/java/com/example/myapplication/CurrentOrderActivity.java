@@ -114,15 +114,22 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
     }
 
     /**
-     * Methos is used to add the order to the store order
+     * Method is used to add the order to the store order
      * @param view
      */
     public void onPlaceOrder(View view){
-        finish();
+        if(storeOrders.isIn(number) == false) {
+            storeOrders.addOrders(order);
+            Intent data = new Intent();
+            data.putExtra("order", order);
+            data.putExtra("storeOrders", storeOrders);
+            setResult(RESULT_OK, data);
+            finish();
+        }
     }
 
     /**
-     * Methos id for the listview and if soemthing is clicked in said list
+     * Method id for the listview and if soemthing is clicked in said list
      * @param parent
      * @param view
      * @param position
