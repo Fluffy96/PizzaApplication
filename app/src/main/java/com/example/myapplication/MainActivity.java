@@ -27,10 +27,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int REQUEST_CODE = 1;
     private TextView phoneNumber;
     private ImageView deluxePizza, hawaiianPizza, pepperoniPizza, cOrder, sOrder;
-    private Order order = null;
+    private Order order;
     private StoreOrders storeOrders = new StoreOrders();
     private double currentOrderTotal;
     private String currentNumber;
+    private ArrayList<Order> sto = new ArrayList<Order>();
     private static final int ONE = 1, TWO = 2, THREE = 3, NEG = -1, PHONELENGTH = 10;
 
     /**
@@ -141,15 +142,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
      */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Bundle b = data.getExtras();
-        order = (Order) b.getSerializable("order");
+        if (requestCode == ONE){
+            order = (Order) data.getSerializableExtra("order");
+        }
         if(requestCode == TWO){
-            storeOrders = (StoreOrders) b.getSerializable("storeOrders");
-            ArrayList<String> numList = storeOrders.getPhoneNumberList();
-            Toast.makeText(getApplicationContext(),(numList.isEmpty())?"NumList Empty":numList.get(0),Toast.LENGTH_SHORT).show();
+
+            System.out.println(order.getPizzaList().toString());
+            sto.add((Order)data.getSerializableExtra("order"));
+
+            System.out.println("hi"+sto.get(0).getPhoneNum());
         }
         if(requestCode == THREE){
-            storeOrders = (StoreOrders) b.getSerializable("storeOrders");
+            storeOrders = (StoreOrders) data.getSerializableExtra("storeOrders");
             ArrayList<String> numList = storeOrders.getPhoneNumberList();
             Toast.makeText(getApplicationContext(),(numList.isEmpty())?"NumList Empty":numList.get(0),Toast.LENGTH_SHORT).show();
         }

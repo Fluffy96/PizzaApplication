@@ -124,9 +124,8 @@ public class CurrentOrderActivity extends AppCompatActivity implements AdapterVi
             //Bundle b = data.getExtras();
             //b.putSerializable("order", order);
             //b.putSerializable("storeOrders", storeOrders);
-            //data.putExtras(b);
-            data.putExtra("order", order);
-            data.putExtra("storeOrders", storeOrders);
+            data.putExtra("order",order);
+            data.putExtra("myData1", storeOrders);
             setResult(RESULT_OK, data);
             finish();
         }
